@@ -12,6 +12,10 @@ class ProfileListViewTests(APITestCase):
         response = self.client.get('/profiles/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+class ProfileDetailViewTests(APITestCase):
+    def setUp(self):
+        User.objects.create_user(username='Dimi', password='pass')
+        
     def test_can_get_profile_details(self):
         dimi = User.objects.get(username='Dimi')
         response = self.client.get('/profiles/1/')
