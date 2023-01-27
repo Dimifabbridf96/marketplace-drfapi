@@ -49,6 +49,11 @@ class ProductDetailsViewTests(APITestCase):
         self.assertEqual(product.title, 'monitor')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_user_cant_update_a_not_owned_product(self):
+        self.client.login(username='Dimi', password='pass')
+        response = self.client.put('/products/2/', {'title': 'amazing'})
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
 
 
 
