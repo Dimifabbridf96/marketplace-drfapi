@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from category.models import Category
 
 
 class Products(models.Model):
@@ -9,6 +10,8 @@ class Products(models.Model):
     image = models.ImageField(upload_to='products/', default='../product')
     title = models.CharField(max_length=30)
     description = models.TextField(max_length=300, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    category = models.ForeignKey('category.Category', on_delete=models.CASCADE, default=None, null=True, related_name='category')
 
     class Meta:
         ordering = ['-created_at']
