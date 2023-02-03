@@ -63,7 +63,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost',]
 
 
 # Application definition
@@ -115,7 +115,7 @@ if 'CLIENT_ORIGIN' in os.environ:
 
     if 'CLIENT_ORIGIN_DEV' in os.environ:
         extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-        ORS_ALLOWED_ORIGIN_REGEXES = [
+        CORS_ALLOWED_ORIGIN_REGEXES = [
            rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
         ]
 
