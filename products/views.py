@@ -8,12 +8,20 @@ class ProductsList(generics.ListCreateAPIView):
     serializer_class = ProductsSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Products.objects.annotate(
-        comments_count=Count('owner__comment', distinct=True),
-        likes_count=Count('owner__like', distinct=True)
+        comments_count=Count('comment', distinct=True),
+        likes_count=Count('liked', distinct=True)
     ).order_by('-created_at')
 
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+        'category',
+        'description'
+
     ]
 
     ordering_fields = [
