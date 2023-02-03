@@ -21,9 +21,9 @@ class ProductsList(generics.ListCreateAPIView):
     filterset_fields = [
         #user feed
         'owner__followed__owner__profile',
-        #user liked posts
+        #user liked products
         'liked__owner__profile',
-        #user posts
+        #user products
         'owner__profile',
     ]
     search_fields = [

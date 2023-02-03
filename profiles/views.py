@@ -3,6 +3,7 @@ from .models import Profile
 from .serializer import ProfileSerializer
 from api_product.permissions import IsOwnerOrReadOnly
 from django.db.models import Count
+from django_filters.rest_framework import DjangoFilterBackend
 
 class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
@@ -12,7 +13,8 @@ class ProfileList(generics.ListAPIView):
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        DjangoFilterBackend,
     ]
     ordering_fields = [
         'products_count',
