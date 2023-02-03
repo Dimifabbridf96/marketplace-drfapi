@@ -16,11 +16,13 @@ class ProductsList(generics.ListCreateAPIView):
         filters.OrderingFilter
     ]
 
-    ordering_filters = [
+    ordering_fields = [
         'comments_count',
         'likes_count',
         'owner__comment__created_at',
-        'owner__liked__created_at'
+        'owner__liked__created_at',
+        'price',
+
     ]
 
     def perform_create(self, serializer):
