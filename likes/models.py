@@ -4,7 +4,7 @@ from products.models import Products
 
 class Like(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='likes')
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='liked')
     created_at = models.DateTimeField(auto_now_add=True)
 
 

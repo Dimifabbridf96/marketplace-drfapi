@@ -12,5 +12,5 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
         def create(self, validated_data):
-            return Category.objects.create(**validated_data)
+            return super().create(validated_data)
             
