@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
-    'category'
+    'category',
+    'django_filters',
     
 ]
 
