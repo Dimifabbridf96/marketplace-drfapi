@@ -16,6 +16,14 @@ class ProfileList(generics.ListAPIView):
         filters.OrderingFilter,
         DjangoFilterBackend,
     ]
+
+    filterset_fields = [
+        #user following profiles
+        'owner__following__followed__profile',
+        #user that follow
+        'owner__followed__owner__profile',
+    ]
+
     ordering_fields = [
         'products_count',
         'followers_count',
