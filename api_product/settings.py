@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 import re
+
 if os.path.exists('env.py'):
     import env
 
@@ -31,7 +32,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in 'os.environ'
-            else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -114,10 +115,10 @@ if 'CLIENT_ORIGIN' in os.environ:
      ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-        extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-           rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-        ]
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+       rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
