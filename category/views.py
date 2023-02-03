@@ -7,6 +7,9 @@ class CategoryList(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
 
+    def perform_create(self, serializer):
+        serializer.save()
+
 class CategoryDetails(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()

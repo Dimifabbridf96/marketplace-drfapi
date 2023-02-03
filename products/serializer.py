@@ -15,5 +15,5 @@ class ProductsSerializer(serializers.ModelSerializer):
         model = Products
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'image', 'title',
-             'description', 'is_owner', 'profile_id', 'profile_image'
+             'description', 'is_owner', 'profile_id', 'profile_image', 'category', 'price'
         ]
