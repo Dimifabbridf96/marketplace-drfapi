@@ -14,7 +14,7 @@ class ProductListViewTests(APITestCase):
         
     def test_logged_user_can_create_product_posts(self):
         self.client.login(username='Dimi', password='pass')
-        response = self.client.post('/products/', {'title': 'a title', 'description': 'a description'})
+        response = self.client.post('/products/', {'title': 'a title', 'description': 'a description', 'category':'Other'})
         count = Products.objects.count()
         self.assertEqual(count, 1)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -30,8 +30,8 @@ class ProductDetailsViewTests(APITestCase):
         dimi = User.objects.create_user(username='Dimi', password='pass')
         alessia = User.objects.create_user(username='Alessia', password='word')
 
-        Products.objects.create(owner=dimi, title='chair', description='ergonomic')
-        Products.objects.create(owner=alessia, title='makeup palette', description='bright and matty')
+        Products.objects.create(owner=dimi, title='chair', description='ergonomic', category='Other')
+        Products.objects.create(owner=alessia, title='makeup palette', description='bright and matty', category='Other')
 
     def test_can_show_detail_products_page(self):
         response = self.client.get('/products/1/')
