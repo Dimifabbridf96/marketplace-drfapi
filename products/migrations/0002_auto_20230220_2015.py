@@ -16,10 +16,5 @@ class Migration(migrations.Migration):
             model_name='products',
             name='category',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='category.category'),
-        ),
-        migrations.AddField(
-            model_name='products',
-            name='price',
-            field=models.DecimalField(decimal_places=2, default=0.0, max_digits=10),
-        ),
+        )
     ]
