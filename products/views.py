@@ -5,7 +5,8 @@ from .models import Products
 from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 
-class ProductsList(generics.ListCreateAPIView):
+
+class ProductsList(generics.ListAPIView):
     serializer_class = ProductsSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Products.objects.annotate(
