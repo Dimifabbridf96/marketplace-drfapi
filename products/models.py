@@ -12,7 +12,7 @@ class Products(models.Model):
     title = models.CharField(max_length=30)
     description = models.TextField(max_length=300, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
     
 
     class Meta:
