@@ -53,6 +53,6 @@ class ProductsDetails(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Products.objects.annotate(
         comments_count=Count('owner__comment', distinct=True),
-        likes_count=Count('owner__like', distinct=True)
+        likes_count=Count('owner__like', distinct=True
     ).order_by('-created_at')
 
