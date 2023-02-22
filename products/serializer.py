@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Products
 from likes.models import Like
-from category.models import Category
 
 class ProductsSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -11,7 +10,6 @@ class ProductsSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    category = serializers.ReadOnlyField(source='category.name')
 
     def get_is_owner(self, obj):
         request = self.context['request']

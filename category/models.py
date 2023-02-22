@@ -2,22 +2,31 @@ from django.db import models
 
 
 class Category(models.Model):
-    CATEGORIES = {
-    ('Other', 'Other'),
-    ('Fashion', 'Fashion'),
-    ('Beauty', 'Beauty'),
-    ('Home & Garden', 'Home & Garden'),
-    ('Toys & Game', 'Toys & Garden'),
-    ('Sport & Outdoor', 'Sport & Outdoor'),
-    ('Pet Supply', 'Pet Supply'),
-    ('Books', 'Books'),
-    ('Electronics', 'Electronics'),
-    ('Car & Motorbike', 'Car & Motorbike')
-    }
+    OTHER = 'Other'
+    FASHION = 'Fashion'
+    BEAUTY = 'Beauty'
+    HOME = 'Home & Garden'
+    TOYS = 'Toys & Garden'
+    SPORT = 'Sport & Outdoor'
+    PET = 'Pet Supply'
+    BOOKS = 'Books'
+    ELECTRONICS = 'Electronics'
+    CAR = 'Car & Motorbike'
+    CATEGORIES = [
+        (OTHER, 'Other'),
+        (FASHION, 'Fashion'),
+        (BEAUTY, 'Beauty'),
+        (HOME, 'Home & Garden'),
+        (TOYS, 'Toys & Garden'),
+        (SPORT, 'Sport & Outdoor'),
+        (PET, 'Pet Supply'),
+        (BOOKS, 'Books'),
+        (ELECTRONICS, 'Electronics'),
+        (CAR, 'Car & Motorbike')
+    ]
 
-    name = models.CharField(max_length=50, choices=CATEGORIES, default='Other')
-    slug = models.SlugField(max_length=50)
-    description = models.TextField(blank=True, default="")
+    name = models.CharField(max_length=50, choices=CATEGORIES, default=OTHER)
+    content = models.TextField(blank=False, default="")
 
     def __str__(self):
         return self.name
