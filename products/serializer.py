@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Products
 from likes.models import Like
+from reviews.models import Reviews
 
 class ProductsSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -9,8 +10,10 @@ class ProductsSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
+    reviews_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
     category = serializers.ChoiceField(choices=Products.CATEGORIES)
+    price = serializers.IntegerField(max_value=1000)
 
 
     def get_is_owner(self, obj):
@@ -32,5 +35,5 @@ class ProductsSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'image', 'title',
              'description', 'is_owner', 'profile_id', 'profile_image', 'category', 'price', 'like_id', 'likes_count',
-             'comments_count'
+             'comments_count','reviews_count'
         ]
