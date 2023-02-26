@@ -10,6 +10,7 @@ class ReviewSerializers(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+    review = serializers.IntegerField(max_value=5)
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -22,10 +23,10 @@ class ReviewSerializers(serializers.ModelSerializer):
         return naturaltime(obj.updated_at)
 
     class Meta:
-        model = Comment
+        model = Reviews
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'product', 'review', 'profile_id', 'profile_image', 'is_owner'
         ]
 
-class CommentDetailSerializer(ReviewSerializers):
+class ReviewDetailSerializer(ReviewSerializers):
     product = serializers.ReadOnlyField(source='products.id')
