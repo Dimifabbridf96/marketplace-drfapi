@@ -10,6 +10,8 @@ class ProductsSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    category = serializers.ChoiceField(choices=Products.CATEGORIES)
+
 
     def get_is_owner(self, obj):
         request = self.context['request']
