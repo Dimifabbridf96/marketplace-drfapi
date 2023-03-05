@@ -3,6 +3,7 @@ from .models import Profile
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+
 class ProfileListViewTests(APITestCase):
     def setUp(self):
         User.objects.create_user(username='Dimi', password='pass')
@@ -11,6 +12,7 @@ class ProfileListViewTests(APITestCase):
         dimi = User.objects.get(username='Dimi')
         response = self.client.get('/profiles/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
 
 class ProfileDetailViewTests(APITestCase):
     def setUp(self):

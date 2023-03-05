@@ -15,12 +15,13 @@ class CommentList(generics.ListCreateAPIView):
     ]
 
     filterset_fields = [
-        #comment by products
+        # comment by products
         'product'
     ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class CommentDetails(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentDetailSerializer

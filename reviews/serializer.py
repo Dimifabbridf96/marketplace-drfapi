@@ -28,5 +28,6 @@ class ReviewSerializers(serializers.ModelSerializer):
             'id', 'owner', 'created_at', 'updated_at', 'product', 'review', 'profile_id', 'profile_image', 'is_owner'
         ]
 
+
 class ReviewDetailSerializer(ReviewSerializers):
     product = serializers.ReadOnlyField(source='products.id')

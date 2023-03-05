@@ -3,6 +3,7 @@ from .models import Products
 from likes.models import Like
 from reviews.models import Reviews
 
+
 class ProductsSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -14,7 +15,6 @@ class ProductsSerializer(serializers.ModelSerializer):
     comments_count = serializers.ReadOnlyField()
     category = serializers.ChoiceField(choices=Products.CATEGORIES)
     price = serializers.IntegerField(max_value=1000)
-
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -28,7 +28,6 @@ class ProductsSerializer(serializers.ModelSerializer):
             ).first()
             return liked.id if liked else None
         return None
-
 
     class Meta:
         model = Products

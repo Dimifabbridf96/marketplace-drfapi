@@ -9,7 +9,7 @@ This database is developed using REST Framework.
 
 # Database Structure
 
-<img src='images/class_api.png'>
+<img src='images/class-api.JPG'>
 
 
 
@@ -48,13 +48,21 @@ This database is developed using REST Framework.
 
 <img src='images/follower-details.png'>
 
-- User can see comment list
+- User can see comments list
+
 <img src='images/comment-list.png'>
 
--user can delete or update comment that own
+- User can delete or update comment that own
 
 <img src='images/comment-details.png'>
 
+- User can see reviews list
+
+<img src='images/review-page.JPG'>
+
+- User can delete or update review that own
+
+<img src='images/review-details.JPG'>
 
 
 
@@ -69,7 +77,7 @@ This database is developed using REST Framework.
 <img src='images/urls.png'>
 
 
-* Bugs
+# Bugs
 
 - At the moment I didn't occure any bug to be solved
 

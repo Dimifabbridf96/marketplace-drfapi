@@ -5,6 +5,7 @@ from api_product.permissions import IsOwnerOrReadOnly
 from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 
+
 class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
@@ -18,9 +19,9 @@ class ProfileList(generics.ListAPIView):
     ]
 
     filterset_fields = [
-        #user following profiles
+        # user following profiles
         'owner__following__followed__profile',
-        #user that follow
+        # user that follow
         'owner__followed__owner__profile',
     ]
 

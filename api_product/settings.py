@@ -124,7 +124,6 @@ MIDDLEWARE = [
 ]
 
 
-
 CORS_ALLOW_CREDENTIALS = True
 
 
