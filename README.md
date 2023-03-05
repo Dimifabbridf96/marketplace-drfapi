@@ -81,6 +81,10 @@ This database is developed using REST Framework.
 
 - At the moment I didn't occure any bug to be solved
 
+# Errors
+
+- Only errors occured are too long line, kept the code like this for better readibility
+
 
 # Project Creation
 
