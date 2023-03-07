@@ -54,8 +54,8 @@ class ProductsDetails(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductsSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Products.objects.annotate(
-        comments_count=Count('owner__comment', distinct=True),
-        likes_count=Count('owner__like', distinct=True),
-        reviews_count=Count('owner__reviews', distinct=True)
+        comments_count=Count('comment', distinct=True),
+        likes_count=Count('liked', distinct=True),
+        reviews_count=Count('reviews', distinct=True)
     ).order_by('-created_at')
 
