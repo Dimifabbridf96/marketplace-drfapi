@@ -1,8 +1,8 @@
 # MarketPlace Api 
 
-This api is the backend part of my marketplace project where the user can upload photos, descriptions, prices and categorize all the product that they want to sell.
+This API is the backend part of my marketplace project where the user can upload photos, descriptions, and prices and categorize all the products that they want to sell.
 
-The user is allowed to comment the product posted to show his interest, leave a like and follow the seller for don't miss any new product.
+The user is allowed to comment on the product posted to show his interest, leave a like and follow the seller so don't miss any new product.
 
 This database is developed using REST Framework.
 
@@ -19,17 +19,17 @@ This database is developed using REST Framework.
 
 * CRUD Testing
 
-- An authernticated user can succesfully update the own profile, read the list of profiles, delete the own profile, create a product insertion, read the list of product, update the own insertion, delete the own insertion
+- An authenticated user can successfully update his profile, read the list of profiles, delete his profile, create a product insertion, read the list of products, update his insertion, delete his insertion
 
-- An authenticated user can follow other profiles, unfollow the profiles, see the list of follower and follow
+- An authenticated user can follow other profiles, unfollow the profiles, see the list of followers, and follow
 
-- An authenticated user can comment an insertion, delete his own comment, update it
+- An authenticated user can comment on an insertion, delete his comment, update it
 
 - An authenticated user can leave like to one insertion, unlike the insertion
 
 * Examples
 
-- User can see the profile, have a delete button, can update changing the value in the form
+- User can see the profile, have a delete button, an update changing the value in the form
 <img src='images/profile-details.png'>
 
 - User can create a product insertion
@@ -40,7 +40,7 @@ This database is developed using REST Framework.
 
 <img src='images/product-details.png'>
 
-- User can see follower list
+- User can see the follower list
 
 <img src='images/follower-list.png'>
 
@@ -52,7 +52,7 @@ This database is developed using REST Framework.
 
 <img src='images/comment-list.png'>
 
-- User can delete or update comment that own
+- Users can delete or update comments that their own
 
 <img src='images/comment-details.png'>
 
@@ -60,7 +60,7 @@ This database is developed using REST Framework.
 
 <img src='images/review-page.JPG'>
 
-- User can delete or update review that own
+- Users can delete or update reviews that their own
 
 <img src='images/review-details.JPG'>
 
@@ -71,7 +71,7 @@ This database is developed using REST Framework.
 
 * Urls 
 
-- Tested all the path to make sure everything work as expected 
+- Tested all the paths to make sure everything work as expected 
 
 
 <img src='images/urls.png'>
@@ -79,11 +79,11 @@ This database is developed using REST Framework.
 
 # Bugs
 
-- At the moment I didn't occure any bug to be solved
+- At the moment I didn't occur any bug to be solved
 
 # Errors
 
-- Only errors occured are too long line, kept the code like this for better readibility
+- Only errors that occurred are too long lines, kept the code like this for better readability
 
 
 # Project Creation
@@ -92,17 +92,17 @@ This database is developed using REST Framework.
 
 - Install the needed libraries, Django, after that start your project using the code django-admin startproject /nameofyourrepository/
 
-- After that install django-cloudinary-storage and PIllow to use yhe credentials of your Cloudinary account.
+- After that install django-cloudinary-storage and PIllow to use the credentials of your Cloudinary account.
 
 - Add the app previously installed in settings.py
 
-- Create an env.py file to set up your enviroment variables
+- Create an env.py file to set up your environment variables
 
-- First of all import os in your env.py file and add the CLOUDINARY_URL variable with value of the url of your account
+- First of all import os in your env.py file and add the CLOUDINARY_URL variable with the value of the URL of your account
 
-- Write an if stratement that check if env.py exists and if exists import env
+- Write an if statement that checks if env.py exists and if exists import env
 
-- After that update settings.py adding the CLOUDINARY_STORAGE variable with CLOUDINARY_URL as an object with the value of the enviroment variable
+- After that update settings.py adding the CLOUDINARY_STORAGE variable with CLOUDINARY_URL as an object with the value of the environment variable
 
 - After that to create a new application in the project use the code python manage.py startapp /nameoftheapp/
 
@@ -131,9 +131,9 @@ This database is developed using REST Framework.
         'dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
     ),
 
-- Install the JSON tokens installing djangorestframework-simplejwt
+- Install the JSON tokens by installing djangorestframework-simplejwt
 
-- Before the deployment is required to define a DEV variable in env.py so in the settings.py is possible to define if the we are working in development or production
+- Before the deployment is required to define a DEV variable in env.py so in the settings.py is possible to define if we are working in development or production
 
 - The code used to define production or development is 
 
@@ -144,7 +144,7 @@ REST_FRAMEWORK = {
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
 
-- Add the code that enable token authentication 
+- Add the code that enables token authentication 
 
 - Create a serializer in the project folder to add the code for the current user 
 
@@ -156,9 +156,9 @@ REST_FRAMEWORK = {
 
 - import dj_database_url in settings.py
 
-- Update the Database variable adding the if statement that check for the presence of Dev variable to determine if we are in production or development
+- Update the Database variable adding the if statement that checks for the presence of the Dev variable to determine if we are in production or development
 
-- Add in env.py the variable DATABASE_URL with the url of the ElephantSQL database create previously 
+- Add in env.py the variable DATABASE_URL with the URL of the ElephantSQL database create previously 
 
 - To migrate all the data in the new database you need to comment out the DEV variable and then migrate all the database
 
@@ -168,13 +168,13 @@ REST_FRAMEWORK = {
 
 - Update ones again the requirements.txt file 
 
-- Create a Procfile and add in it the command  release: python manage.py makemigrations && python manage.py migrate web: gunicorn /projectname/.wsgi 
+- Create a Procfile and add in it the command release: python manage.py makemigrations && python manage.py migrate web: gunicorn /projectname/.wsgi 
 
-- In settings.py replace the value of ALLOWED_HOST including the heroku app url 
+- In settings.py replace the value of ALLOWED_HOST including the Heroku app URL 
 
 - Add Corsheader in Middleware
 
-- under the MiddleWare section add the code that check for the allowed origins that can make request to this api with the code  
+- under the MiddleWare section add the code that checks for the allowed origins that can make a request to this API with the code  
 
     if 'CLIENT_ORIGIN' in os.environ:
      CORS_ALLOWED_ORIGINS = [
@@ -188,19 +188,19 @@ REST_FRAMEWORK = {
 
 - Add the variable JWT_AUTH_SAMESITE
 
-- replace the variable SECRET_KEY with the one in the enviromental file, if the secretkey used is expose in the gitpod commit make sure to change it before deploy on Heroku
+- replace the variable SECRET_KEY with the one in the environmental file, if the secret key used is expose in the gitpod commit make sure to change it before deploying on Heroku
 
-- Set Debug on False
+- Set Debug to False
 
 - update requirements.txt
 
-- add, commit and push
+- add, commit, and push
 
-- One done that go on Heroku and deploy the repository adding all the variable needed like CLOUDINARY_URL, DATABASE_URL, SECRET_KEY, DISABLECOLLECTSTATIC and ALLOWED_HOST
+- Once done that go on Heroku and deploy the repository adding all the variables needed like CLOUDINARY_URL, DATABASE_URL, SECRET_KEY, DISABLECOLLECTSTATIC, and ALLOWED_HOST
 
 
 # CREDITS
 
-- Big thanks to Code Institute for all the knowledge learn in this course and all the explaination step by step in this carrer change for me so important
+- Big thanks to Code Institute for all the knowledge learned in this course and all the explanations step by step in this career change for me so important
 
 
