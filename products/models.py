@@ -7,7 +7,7 @@ class Products(models.Model):
     FASHION = 'Fashion'
     BEAUTY = 'Beauty'
     HOME = 'Home & Garden'
-    TOYS = 'Toys & Garden'
+    TOYS = 'Toys & Game'
     SPORT = 'Sport & Outdoor'
     PET = 'Pet Supply'
     BOOKS = 'Books'
@@ -18,7 +18,7 @@ class Products(models.Model):
         (FASHION, 'Fashion'),
         (BEAUTY, 'Beauty'),
         (HOME, 'Home & Garden'),
-        (TOYS, 'Toys & Garden'),
+        (TOYS, 'Toys & Game'),
         (SPORT, 'Sport & Outdoor'),
         (PET, 'Pet Supply'),
         (BOOKS, 'Books'),
@@ -30,7 +30,7 @@ class Products(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     image = models.ImageField(upload_to='products/', default='../product')
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=230)
     description = models.TextField(max_length=300, blank=True)
     price = models.IntegerField(default=0)
     category = models.CharField(max_length=30, choices=CATEGORIES, default=OTHER)
